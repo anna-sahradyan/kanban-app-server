@@ -1,21 +1,26 @@
 const mongoose = require('mongoose');
-const { Schema } = require('mongoose');
+const {Schema} = require('mongoose');
+const {schemaOptions} = require("./modelOptions");
 const TodoSchema = new mongoose.Schema({
-  user: {
-    type: Schema.Types.ObjectId,
-    ref: 'User',
-    required: true,
-  },
-  title: {
-    type: String,
-    default: 'Untitled',
-  },
-  description: {
-    type: String,
-    default: `Add description here`,
-  },
+    section: {
+        type: Schema.Types.ObjectId,
+        ref: 'Section',
+        required: true,
+    },
+    title: {
+        type: String,
+        default: '',
+    },
+    content: {
+        type: String,
+        default: ''
+    },
+    position: {
+        type: Number
+    },
 
-});
+
+},schemaOptions);
 const Todo = mongoose.model('Todo', TodoSchema);
 
 module.exports = Todo;
